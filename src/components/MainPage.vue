@@ -1,9 +1,11 @@
 <template>
   <div class="container">
-    <Products
-      :products="store"
-      @add-in-cart="addInCartHandler($event)"
-    ></Products>
+    <div v-for="product in store">
+      <Product
+        :product="product"
+        @add-in-cart="addInCartHandler($event)"
+      ></Product>
+    </div>
   </div>
 </template>
 
@@ -11,19 +13,16 @@
 import { ref } from "vue";
 import axios from "axios";
 
-import Products from "@/components/Products.vue";
+// components
+import Product from "@/components/Product.vue";
 
-type Store = {
-  category: string;
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  image: string;
-};
+// pinia store
+import { itemCart } from "@/stores/cart";
+import { storeToRefs } from "pinia";
+const cart = itemCart();
+const { cartItems } = storeToRefs(cart);
 
-const store = ref<Store[]>([]);
-const productId = ref<number>(0);
+const store = ref<Product[]>([]);
 
 async function getStore() {
   const api: string = "https://fakestoreapi.com/products";
@@ -31,8 +30,12 @@ async function getStore() {
   store.value = response.data;
 }
 
-function addInCartHandler(product: Store) {
-  console.log(product.title, product.price + "$");
+function addInCartHandler(product: Product) {
+  if (cart.checkCartItem(product)) {
+    cart.incrementItemQuantity(product);
+  } else {
+    cart.addCartItem(product);
+  }
 }
 
 getStore();
