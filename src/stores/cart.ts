@@ -18,7 +18,10 @@ export const itemCart = defineStore("cart", () => {
     return cartItems.value.includes(product);
   }
 
-  function incrementItemQuantity(product: cartProduct) {}
+  function incrementItemQuantity(product: cartProduct) {
+    cartItems.value.map((p) => ({ ...p, quantity: 0 }));
+    console.log(cartItems.value);
+  }
 
   return { cartItems, addCartItem, checkCartItem, incrementItemQuantity };
 });

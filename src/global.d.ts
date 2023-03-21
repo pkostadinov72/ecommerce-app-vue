@@ -5,5 +5,5 @@ type Product = {
   description: string;
   price: number;
   image: string;
-  quantity: 0;
+  quantity: number;
 };
