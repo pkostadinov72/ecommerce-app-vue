@@ -19,7 +19,6 @@ export const itemCart = defineStore("cart", () => {
   }
 
   function incrementItemQuantity(product: cartProduct) {
-    cartItems.value.map((p) => ({ ...p, quantity: 0 }));
     console.log(cartItems.value);
   }
 

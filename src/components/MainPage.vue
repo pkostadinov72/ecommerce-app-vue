@@ -23,6 +23,7 @@ const cart = itemCart();
 const { cartItems } = storeToRefs(cart);
 
 const store = ref<Product[]>([]);
+store.value.map((p) => ({ ...p, quantity: 0 }));
 
 async function getStore() {
   const api: string = "https://fakestoreapi.com/products";
