@@ -1,8 +1,10 @@
 <template>
-  <div class="cart">
-    <h1>Cart with items:</h1>
-  </div>
+  <CartProduct></CartProduct>
 </template>
+
+<script setup lang="ts">
+import CartProduct from "@/components/CartProduct.vue";
+</script>
 
 <style>
 @media (min-width: 1024px) {

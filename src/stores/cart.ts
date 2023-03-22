@@ -19,7 +19,7 @@ export const itemCart = defineStore("cart", () => {
   }
 
   function incrementItemQuantity(product: cartProduct) {
-    console.log(cartItems.value);
+    product.quantity++;
   }
 
   return { cartItems, addCartItem, checkCartItem, incrementItemQuantity };
