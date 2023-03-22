@@ -2,19 +2,13 @@ import { ref } from "vue";
 import { defineStore } from "pinia";
 
 export const itemCart = defineStore("cart", () => {
-  type cartProduct = {
-    title: string;
-    price: number;
-    image: string;
-    quantity: number;
-  };
-  const cartItems = ref<cartProduct[]>([]);
+  const cartItems = ref<Product[]>([]);
 
-  function addCartItem(product: cartProduct) {
+  function addCartItem(product: Product) {
     cartItems.value.push(product);
   }
 
-  function incrementCartItemQuantity(product: cartProduct) {
+  function incrementCartItemQuantity(product: Product) {
     for (let item of cartItems.value) {
       if (item.title === product.title) {
         item.quantity++;

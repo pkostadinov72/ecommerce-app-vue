@@ -19,7 +19,6 @@ import Product from "@/components/Product.vue";
 // pinia store
 import { itemCart } from "@/stores/cart";
 import { storeToRefs } from "pinia";
-import { includeBooleanAttr } from "@vue/shared";
 const cart = itemCart();
 const { cartItems } = storeToRefs(cart);
 
