@@ -6,6 +6,7 @@
 </template>
 
 <script setup lang="ts">
+// pinia store
 import { itemCart } from "@/stores/cart";
 import { storeToRefs } from "pinia";
 const cart = itemCart();

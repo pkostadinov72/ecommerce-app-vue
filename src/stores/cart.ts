@@ -14,13 +14,14 @@ export const itemCart = defineStore("cart", () => {
     cartItems.value.push(product);
   }
 
-  function checkCartItem(product: cartProduct) {
-    return cartItems.value.includes(product);
+  function incrementCartItemQuantity(product: cartProduct) {
+    for (let item of cartItems.value) {
+      if (item.title === product.title) {
+        item.quantity++;
+        return true;
+      }
+    }
   }
 
-  function incrementItemQuantity(product: cartProduct) {
-    product.quantity++;
-  }
-
-  return { cartItems, addCartItem, checkCartItem, incrementItemQuantity };
+  return { cartItems, addCartItem, incrementCartItemQuantity };
 });

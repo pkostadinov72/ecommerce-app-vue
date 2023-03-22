@@ -19,6 +19,7 @@ import Product from "@/components/Product.vue";
 // pinia store
 import { itemCart } from "@/stores/cart";
 import { storeToRefs } from "pinia";
+import { includeBooleanAttr } from "@vue/shared";
 const cart = itemCart();
 const { cartItems } = storeToRefs(cart);
 
@@ -29,24 +30,17 @@ async function getStore() {
   const response = await axios.get(api);
   store.value = response.data;
   for (let product of store.value) {
-    product.quantity = 0;
+    product.quantity = 1;
   }
 }
 
 function addInCartHandler(product: Product) {
   if (cartItems.value.length === 0) {
     cart.addCartItem(product);
+    cartItems.value[0].quantity--;
   }
-
-  console.log(product.quantity, "product");
-
-  for (let item of cartItems.value) {
-    if (item.title === product.title) {
-      product.quantity++;
-      console.log(product.quantity);
-    } else {
-      cart.addCartItem(product);
-    }
+  if (!cart.incrementCartItemQuantity(product) as boolean) {
+    cart.addCartItem(product);
   }
 }
 

@@ -3,7 +3,6 @@
     <h3>{{ product.title }}</h3>
     {{ product.description }}
     <h3>{{ product.price }}$</h3>
-    {{ product.quantity }}
     <button class="btnAddCart" @click="emits('addInCart', product)">Add in Cart</button>
     </pre>
 </template>
