@@ -17,5 +17,19 @@ export const itemCart = defineStore("cart", () => {
     }
   }
 
-  return { cartItems, addCartItem, incrementCartItemQuantity };
+  function decrementCartItemQuantity(product: Product) {
+    for (let item of cartItems.value) {
+      if (item.title === product.title) {
+        item.quantity--;
+        return true;
+      }
+    }
+  }
+
+  return {
+    cartItems,
+    addCartItem,
+    incrementCartItemQuantity,
+    decrementCartItemQuantity,
+  };
 });

@@ -1,7 +1,25 @@
 <template>
   <div v-for="item in cartItems">
-    {{ item.title }} -- {{ item.price }} -- {{ item.quantity }} =
-    {{ item.price * item.quantity }}
+    <h2>{{ item.title }} - {{ item.price }}$</h2>
+    <h3>
+      <button
+        class="btnPlusMinus"
+        @click="cart.decrementCartItemQuantity(item)"
+      >
+        -
+      </button>
+      {{ item.quantity }}br.
+      <button
+        class="btnPlusMinus"
+        @click="cart.incrementCartItemQuantity(item)"
+      >
+        +
+      </button>
+    </h3>
+    <h3>
+      Price for {{ item.quantity }} -
+      {{ finalPrice(item.price, item.quantity) }}$
+    </h3>
   </div>
 </template>
 
@@ -11,6 +29,42 @@ import { itemCart } from "@/stores/cart";
 import { storeToRefs } from "pinia";
 const cart = itemCart();
 const { cartItems } = storeToRefs(cart);
+
+function finalPrice(price: number, quantity: number) {
+  return price * quantity;
+}
 </script>
 
-<style></style>
+<style>
+.btnPlusMinus {
+  margin: 10px;
+  display: inline-block;
+  outline: none;
+  border-width: 0px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: inherit;
+  font-weight: 500;
+  max-width: 100%;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.1s ease-out 0s,
+    box-shadow 0.15s cubic-bezier(0.47, 0.03, 0.49, 1.38) 0s;
+  background: #0102000a;
+  cursor: pointer;
+  height: 32px;
+  line-height: 32px;
+  padding: 0px 12px;
+  vertical-align: middle;
+  width: auto;
+  font-size: 14px;
+  color: #42526e;
+}
+
+.btnPlusMinus:hover {
+  background: #091e4214;
+  text-decoration: inherit;
+  transition-duration: 0s, 0.15s;
+  color: #42526e;
+}
+</style>
