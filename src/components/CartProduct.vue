@@ -1,10 +1,11 @@
 <template>
   <div v-for="item in cartItems">
-    <h2>{{ item.title }} - {{ item.price }}$</h2>
+    <h2>{{ item.title }} -</h2>
+    <h2>{{ finalPrice(item.price, item.quantity) }}$</h2>
     <h3>
       <button
         class="btnPlusMinus"
-        @click="cart.decrementCartItemQuantity(item)"
+        @click="cart.decrementCartItemQuantity(cartItems, item)"
       >
         -
       </button>
@@ -16,10 +17,9 @@
         +
       </button>
     </h3>
-    <h3>
-      Price for {{ item.quantity }} -
-      {{ finalPrice(item.price, item.quantity) }}$
-    </h3>
+    <button class="btnPlusMinus" @click="cart.deleteCartItem(cartItems, item)">
+      delete
+    </button>
   </div>
 </template>
 
@@ -31,7 +31,8 @@ const cart = itemCart();
 const { cartItems } = storeToRefs(cart);
 
 function finalPrice(price: number, quantity: number) {
-  return price * quantity;
+  let sum = price * quantity;
+  return (Math.round(sum * 100) / 100).toFixed(2);
 }
 </script>
 
