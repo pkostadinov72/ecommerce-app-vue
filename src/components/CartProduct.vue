@@ -1,25 +1,30 @@
 <template>
-  <div v-for="item in cartItems">
-    <h2>{{ item.title }} -</h2>
-    <h2>{{ finalPrice(item.price, item.quantity) }}$</h2>
-    <h3>
+  <div class="container">
+    <div v-for="item in cartItems">
+      <h2>{{ item.title }} -</h2>
+      <h2>{{ finalPrice(item.price, item.quantity) }}$</h2>
+      <h3>
+        <button
+          class="btnPlusMinus"
+          @click="cart.decrementCartItemQuantity(cartItems, item)"
+        >
+          -
+        </button>
+        {{ item.quantity }}br.
+        <button
+          class="btnPlusMinus"
+          @click="cart.incrementCartItemQuantity(item)"
+        >
+          +
+        </button>
+      </h3>
       <button
         class="btnPlusMinus"
-        @click="cart.decrementCartItemQuantity(cartItems, item)"
+        @click="cart.deleteCartItem(cartItems, item)"
       >
-        -
+        delete
       </button>
-      {{ item.quantity }}br.
-      <button
-        class="btnPlusMinus"
-        @click="cart.incrementCartItemQuantity(item)"
-      >
-        +
-      </button>
-    </h3>
-    <button class="btnPlusMinus" @click="cart.deleteCartItem(cartItems, item)">
-      delete
-    </button>
+    </div>
   </div>
 </template>
 
