@@ -1,8 +1,10 @@
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { defineStore } from "pinia";
 
 export const itemCart = defineStore("cart", () => {
   const cartItems = ref<Product[]>([]);
+
+  const finalCartPrice = ref<number>(0);
 
   function addCartItem(product: Product) {
     cartItems.value.push(product);
@@ -15,6 +17,11 @@ export const itemCart = defineStore("cart", () => {
         return true;
       }
     }
+  }
+
+  function finalPrice(price: number, quantity: number) {
+    let sum = price * quantity;
+    return Math.round(sum * 100) / 100;
   }
 
   function decrementCartItemQuantity(productList: Product[], product: Product) {
@@ -48,5 +55,7 @@ export const itemCart = defineStore("cart", () => {
     incrementCartItemQuantity,
     decrementCartItemQuantity,
     deleteCartItem,
+    finalPrice,
+    finalCartPrice,
   };
 });

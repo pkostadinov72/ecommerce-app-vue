@@ -1,10 +1,13 @@
 <template>
   <div class="container">
     <div v-for="item in cartItems">
+      <h1 v-if="cartItems.length > 0">
+        Общо : {{ cart.finalCartPrice.toFixed(2) }}
+      </h1>
       <h2 class="cartItemTitle">{{ item.title }}</h2>
       <h2 class="finalPrice">
         Цена за 1бр - {{ item.price }}лв. | Сума -
-        {{ finalPrice(item.price, item.quantity) }}лв.
+        {{ cart.finalPrice(item.price, item.quantity) }}лв.
       </h2>
       <h3>
         <button
@@ -37,11 +40,6 @@ import { itemCart } from "@/stores/cart";
 import { storeToRefs } from "pinia";
 const cart = itemCart();
 const { cartItems } = storeToRefs(cart);
-
-function finalPrice(price: number, quantity: number) {
-  let sum = price * quantity;
-  return (Math.round(sum * 100) / 100).toFixed(2);
-}
 </script>
 
 <style>
