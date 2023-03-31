@@ -1,8 +1,11 @@
 <template>
   <div class="container">
     <div v-for="item in cartItems">
-      <h2>{{ item.title }} -</h2>
-      <h2>{{ finalPrice(item.price, item.quantity) }}$</h2>
+      <h2 class="cartItemTitle">{{ item.title }}</h2>
+      <h2 class="finalPrice">
+        Цена за 1бр - {{ item.price }}лв. | Сума -
+        {{ finalPrice(item.price, item.quantity) }}лв.
+      </h2>
       <h3>
         <button
           class="btnPlusMinus"
@@ -10,7 +13,7 @@
         >
           -
         </button>
-        {{ item.quantity }}br.
+        {{ item.quantity }}бр.
         <button
           class="btnPlusMinus"
           @click="cart.incrementCartItemQuantity(item)"
@@ -22,7 +25,7 @@
         class="btnPlusMinus"
         @click="cart.deleteCartItem(cartItems, item)"
       >
-        delete
+        Remove from Cart
       </button>
     </div>
   </div>
@@ -72,5 +75,9 @@ function finalPrice(price: number, quantity: number) {
   text-decoration: inherit;
   transition-duration: 0s, 0.15s;
   color: #42526e;
+}
+
+.finalPrice {
+  margin: 10px;
 }
 </style>

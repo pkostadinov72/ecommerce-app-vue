@@ -2,7 +2,7 @@
   <pre>
     <h3>{{ product.title }}</h3>
     {{ product.description }}
-    <h3>{{ product.price }}$</h3>
+    <h3>{{ product.price }}лв.</h3>
     <button class="btnAddCart" @click="emits('addInCart', product)">Add in Cart</button>
     </pre>
 </template>
