@@ -4,6 +4,18 @@ import { defineStore } from "pinia";
 export const itemCart = defineStore("cart", () => {
   const cartItems = ref<Product[]>([]);
 
+  if (localStorage.getItem("cart")) {
+    cartItems.value = JSON.parse(localStorage.getItem("cart") as string);
+  }
+
+  watch(
+    cartItems,
+    (cartItemsVal) => {
+      localStorage.setItem("cart", JSON.stringify(cartItemsVal));
+    },
+    { deep: true }
+  );
+
   const finalCartPrice = ref<number>(0);
 
   function addCartItem(product: Product) {
