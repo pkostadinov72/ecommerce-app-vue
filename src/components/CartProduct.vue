@@ -1,9 +1,9 @@
 <template>
   <div class="container">
+    <h1 v-if="cartItems.length > 0">
+      Общо : {{ cart.finalCartPrice.toFixed(2) }}лв.
+    </h1>
     <div v-for="item in cartItems">
-      <h1 v-if="cartItems.length > 0">
-        Общо : {{ cart.finalCartPrice.toFixed(2) }}
-      </h1>
       <h2 class="cartItemTitle">{{ item.title }}</h2>
       <h2 class="finalPrice">
         Цена за 1бр - {{ item.price }}лв. | Сума -
