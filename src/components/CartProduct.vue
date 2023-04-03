@@ -1,8 +1,11 @@
 <template>
-  <div class="container">
-    <h1 v-if="cartItems.length > 0">
-      Общо : {{ cart.finalCartPrice.toFixed(2) }}лв.
-    </h1>
+  <div v-if="cartItems.length === 0">
+    <h1>Your cart is emty...</h1>
+    <h1>- <RouterLink to="/">Add</RouterLink> an Item!</h1>
+  </div>
+  <div class="container" v-else>
+    <h1>Общо : {{ cart.finalCartPrice.toFixed(2) }}лв.</h1>
+    <div>--------------------------------------------------</div>
     <div v-for="item in cartItems">
       <h2 class="cartItemTitle">{{ item.title }}</h2>
       <h2 class="finalPrice">
