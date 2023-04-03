@@ -37,7 +37,6 @@ function addInCartHandler(product: Product) {
   if (cartItems.value.length === 0) {
     cart.addCartItem(product);
     cart.finalCartPrice += product.price;
-    // cartItems.value[0].quantity--;
   } else if (!cart.incrementCartItemQuantity(product) as boolean) {
     cart.addCartItem(product);
     cart.finalCartPrice += product.price;

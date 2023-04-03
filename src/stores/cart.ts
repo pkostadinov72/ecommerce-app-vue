@@ -71,7 +71,7 @@ export const itemCart = defineStore("cart", () => {
       productList.splice(index, 1);
     }
     // return the modified array
-    finalCartPrice.value -= product.quantity * product.price;
+    finalCartPrice.value -= finalPrice(product.price, product.quantity);
     return productList;
   }
 
