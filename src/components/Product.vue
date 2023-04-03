@@ -1,10 +1,19 @@
 <template>
-  <pre>
-    <h3>{{ product.title }}</h3>
-    {{ product.description }}
-    <h3>- {{ product.price }}лв.</h3>
-    <button class="btnAddCart" @click="emits('addInCart', product)">Add in Cart</button>
-    </pre>
+  <div class="productStyle">
+    <h2 class="productTitle">{{ product.title }}</h2>
+    <p class="productDescription">
+      {{ product.description }}
+    </p>
+    <div>
+      <img class="productImage" :src="product.image" :alt="product.image" />
+      <h1 class="productPrice">
+        - {{ product.price }}лв.
+        <button class="btnAddCart" @click="emits('addInCart', product)">
+          Add in Cart
+        </button>
+      </h1>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -45,5 +54,31 @@ const emits = defineEmits(["addInCart"]);
   text-decoration: inherit;
   transition-duration: 0s, 0.15s;
   color: #42526e;
+}
+
+.productStyle {
+  margin: 25px;
+}
+
+.productTitle {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.productDescription {
+  margin-bottom: 75px;
+  float: right;
+}
+
+.productImage {
+  float: bottom;
+  width: 250px;
+  height: auto;
+  margin-bottom: 40px;
+}
+
+.productPrice {
+  float: right;
+  margin: 10px;
 }
 </style>
