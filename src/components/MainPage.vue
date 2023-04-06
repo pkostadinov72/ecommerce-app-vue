@@ -21,7 +21,6 @@ import { itemCart } from "@/stores/cart";
 import { storeToRefs } from "pinia";
 const cart = itemCart();
 const { cartItems } = storeToRefs(cart);
-
 const store = ref<Product[]>([]);
 
 async function getStore() {

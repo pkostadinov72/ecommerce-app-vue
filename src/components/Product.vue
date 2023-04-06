@@ -8,9 +8,9 @@
       <img class="productImage" :src="product.image" :alt="product.image" />
       <h1 class="productPrice">
         - {{ product.price }}лв.
-        <button class="btnAddCart" @click="emits('addInCart', product)">
+        <q-btn class="btnAddCart" @click="emits('addInCart', product)">
           Add in Cart
-        </button>
+        </q-btn>
       </h1>
     </div>
   </div>

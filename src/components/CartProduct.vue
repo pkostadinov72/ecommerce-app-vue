@@ -5,6 +5,7 @@
   </div>
   <div class="container" v-else>
     <h1 class="finalPrice">Общо : {{ cart.finalCartPrice.toFixed(2) }}лв.</h1>
+    <q-btn class="btnPlusMinus" @click="addedItemNotify()">notify me</q-btn>
     <div>--------------------------------------------------</div>
     <div class="itemStyle" v-for="item in cartItems">
       <h2 class="cartItemTitle">{{ item.title }}</h2>
@@ -42,8 +43,21 @@
 // pinia store
 import { itemCart } from "@/stores/cart";
 import { storeToRefs } from "pinia";
+import { useQuasar } from "quasar";
 const cart = itemCart();
 const { cartItems } = storeToRefs(cart);
+
+const $q = useQuasar();
+
+function addedItemNotify() {
+  $q.notify({
+    message: "Item added to Cart.",
+    color: "green",
+    position: "top",
+    timeout: 2500,
+    progress: true,
+  });
+}
 </script>
 
 <style>
