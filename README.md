@@ -1,6 +1,6 @@
 # ecommerce-app-vue
 
-This template should help get you started developing with Vue 3 in Vite.
+Simple eCommerce App with Vue + Typescript. Featuring Refresh proof pinia state and basic Vue Router implementation.
 
 ## Recommended IDE Setup
 
@@ -31,10 +31,4 @@ npm install
 
 ```sh
 npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
 ```
