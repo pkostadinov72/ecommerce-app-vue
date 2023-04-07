@@ -33,27 +33,10 @@ export const itemCart = defineStore("cart", () => {
   // Quasar
   const $q = useQuasar();
 
-  function addedItemNotify() {
+  function itemNotify(msg: string, color: string) {
     $q.notify({
-      message: "Item successfully added to Cart.",
-      color: "green",
-      position: "top",
-      timeout: 2500,
-      progress: true,
-      actions: [
-        {
-          label: "Dismiss",
-          color: "white",
-          handler: () => {},
-        },
-      ],
-    });
-  }
-
-  function removedItemNotify() {
-    $q.notify({
-      message: "Item removed from Cart.",
-      color: "red",
+      message: msg,
+      color: color,
       position: "top",
       timeout: 2500,
       progress: true,
@@ -74,12 +57,13 @@ export const itemCart = defineStore("cart", () => {
 
   function addCartItem(product: Product) {
     cartItems.value.push(product);
-    addedItemNotify();
+    itemNotify("Item successfully added to Cart.", "green");
   }
 
   function incrementCartItemQuantity(product: Product) {
     for (let item of cartItems.value) {
       if (item.title === product.title) {
+        itemNotify("One more Item Added.", "blue");
         item.quantity++;
         finalCartPrice.value += item.price;
         return true;
@@ -91,7 +75,6 @@ export const itemCart = defineStore("cart", () => {
     for (let item of cartItems.value) {
       if (item.title === product.title) {
         if (item.quantity <= 1) {
-          removedItemNotify();
           deleteCartItem(productList, product);
         } else {
           item.quantity--;
@@ -108,7 +91,7 @@ export const itemCart = defineStore("cart", () => {
     const index = productList.indexOf(product);
     // if the element is in the array, remove it
     if (index !== -1) {
-      removedItemNotify();
+      itemNotify("Item removed from Cart.", "red");
       productList.splice(index, 1);
     }
     // return the modified array
