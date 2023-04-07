@@ -4,8 +4,9 @@ import { RouterLink, RouterView } from "vue-router";
 
 <template>
   <nav>
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/cart">Cart</RouterLink>
+    <RouterLink class="text-h6" to="/">Home</RouterLink>
+    <RouterLink class="text-h6" to="/cart">Cart</RouterLink>
+    <!-- <q-icon name="fa-regular fa-cart-shopping" to="/cart">Cart</q-icon> -->
     <RouterView />
   </nav>
 </template>
