@@ -33,9 +33,9 @@ export const itemCart = defineStore("cart", () => {
   // Quasar
   const $q = useQuasar();
 
-  function addedItemNotify(msg: string) {
+  function addedItemNotify() {
     $q.notify({
-      message: msg,
+      message: "Item successfully added to Cart.",
       color: "green",
       position: "top",
       timeout: 2500,
@@ -52,9 +52,9 @@ export const itemCart = defineStore("cart", () => {
     });
   }
 
-  function removedItemNotify(msg: string) {
+  function removedItemNotify() {
     $q.notify({
-      message: msg,
+      message: "Item removed from Cart.",
       color: "red",
       position: "top",
       timeout: 2500,
@@ -78,7 +78,7 @@ export const itemCart = defineStore("cart", () => {
 
   function addCartItem(product: Product) {
     cartItems.value.push(product);
-    addedItemNotify("Item successfully added to Cart.");
+    addedItemNotify();
   }
 
   function incrementCartItemQuantity(product: Product) {
@@ -96,7 +96,7 @@ export const itemCart = defineStore("cart", () => {
       if (item.title === product.title) {
         if (item.quantity <= 1) {
           deleteCartItem(productList, product);
-          removedItemNotify("Item removed from Cart.");
+          removedItemNotify();
         } else {
           item.quantity--;
           finalCartPrice.value -= item.price;
@@ -116,7 +116,7 @@ export const itemCart = defineStore("cart", () => {
     }
     // return the modified array
     finalCartPrice.value -= finalPrice(product.price, product.quantity);
-    removedItemNotify("Item removed from Cart.");
+    removedItemNotify();
     return productList;
   }
 
