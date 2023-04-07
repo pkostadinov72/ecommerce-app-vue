@@ -1,6 +1,8 @@
 <template>
   <div class="container">
     <div v-for="product in store">
+      <q-separator></q-separator>
+
       <Product
         :product="product"
         @add-in-cart="addInCartHandler($event)"

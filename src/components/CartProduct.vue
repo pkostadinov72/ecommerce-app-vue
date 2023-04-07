@@ -9,6 +9,8 @@
     <q-separator></q-separator>
 
     <div class="q-mb-xl" v-for="item in cartItems">
+      <q-separator></q-separator>
+
       <h4 class="q-mt-xl">{{ item.title }}</h4>
       <img class="cartProductImage" :src="item.image" :alt="item.image" />
       <h5 class="price">

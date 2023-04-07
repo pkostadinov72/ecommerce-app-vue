@@ -1,6 +1,6 @@
 <template>
   <div class="productStyle">
-    <h2 class="q-mb-xl text-h4">{{ product.title }}</h2>
+    <h2 class="q-mb-xl q-mt-xl text-h4">{{ product.title }}</h2>
     <h3 class="q-mt-lg q-mb-xl q-ml-lg text-subtitle1">
       {{ product.description }}
     </h3>

@@ -44,9 +44,7 @@ export const itemCart = defineStore("cart", () => {
         {
           label: "Dismiss",
           color: "white",
-          handler: () => {
-            /* ... */
-          },
+          handler: () => {},
         },
       ],
     });
@@ -63,9 +61,7 @@ export const itemCart = defineStore("cart", () => {
         {
           label: "Dismiss",
           color: "white",
-          handler: () => {
-            /* ... */
-          },
+          handler: () => {},
         },
       ],
     });
