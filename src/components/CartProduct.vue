@@ -1,13 +1,15 @@
 <template>
   <div v-if="cartItems.length === 0">
-    <h3>Your cart is emty...</h3>
-    <h3>- <RouterLink to="/">Add</RouterLink> an Item!</h3>
+    <h3 class="q-mt-xl q-mb-xl">Your cart is emty...</h3>
+    <h4>- <RouterLink to="/">Add</RouterLink> an Item!</h4>
   </div>
   <div class="container" v-else>
     <h1 class="finalPrice">Общо : {{ cart.finalCartPrice.toFixed(2) }}лв.</h1>
-    <div>--------------------------------------------------</div>
-    <div class="itemStyle" v-for="item in cartItems">
-      <h4 class="cartItemTitle">{{ item.title }}</h4>
+
+    <q-separator></q-separator>
+
+    <div class="q-mb-xl" v-for="item in cartItems">
+      <h4 class="q-mt-xl">{{ item.title }}</h4>
       <img class="cartProductImage" :src="item.image" :alt="item.image" />
       <h5 class="price">
         Цена за 1бр - {{ item.price }}лв. | Сума -
@@ -91,9 +93,5 @@ const { cartItems } = storeToRefs(cart);
   width: 150px;
   height: auto;
   margin: 25px;
-}
-
-.itemStyle {
-  margin-bottom: 30px;
 }
 </style>

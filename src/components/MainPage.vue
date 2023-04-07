@@ -19,20 +19,6 @@ import Product from "@/components/Product.vue";
 // pinia store
 import { itemCart } from "@/stores/cart";
 import { storeToRefs } from "pinia";
-import { useQuasar } from "quasar";
-
-// Quasar
-const $q = useQuasar();
-
-function addedItemNotify() {
-  $q.notify({
-    message: "Product added to Cart.",
-    color: "green",
-    position: "top",
-    timeout: 2500,
-    progress: true,
-  });
-}
 
 const cart = itemCart();
 const { cartItems } = storeToRefs(cart);
@@ -51,11 +37,9 @@ function addInCartHandler(product: Product) {
   if (cartItems.value.length === 0) {
     cart.addCartItem(product);
     cart.finalCartPrice += product.price;
-    addedItemNotify();
   } else if (!cart.incrementCartItemQuantity(product) as boolean) {
     cart.addCartItem(product);
     cart.finalCartPrice += product.price;
-    addedItemNotify();
   }
 }
 

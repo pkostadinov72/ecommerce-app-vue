@@ -1,5 +1,6 @@
 import { ref, watch } from "vue";
 import { defineStore } from "pinia";
+import { useQuasar } from "quasar";
 
 export const itemCart = defineStore("cart", () => {
   const cartItems = ref<Product[]>([]);
@@ -29,6 +30,47 @@ export const itemCart = defineStore("cart", () => {
     { deep: true }
   );
 
+  // Quasar
+  const $q = useQuasar();
+
+  function addedItemNotify(msg: string) {
+    $q.notify({
+      message: msg,
+      color: "green",
+      position: "top",
+      timeout: 2500,
+      progress: true,
+      actions: [
+        {
+          label: "Dismiss",
+          color: "white",
+          handler: () => {
+            /* ... */
+          },
+        },
+      ],
+    });
+  }
+
+  function removedItemNotify(msg: string) {
+    $q.notify({
+      message: msg,
+      color: "red",
+      position: "top",
+      timeout: 2500,
+      progress: true,
+      actions: [
+        {
+          label: "Dismiss",
+          color: "white",
+          handler: () => {
+            /* ... */
+          },
+        },
+      ],
+    });
+  }
+
   function finalPrice(price: number, quantity: number) {
     let sum = price * quantity;
     return Math.round(sum * 100) / 100;
@@ -36,6 +78,7 @@ export const itemCart = defineStore("cart", () => {
 
   function addCartItem(product: Product) {
     cartItems.value.push(product);
+    addedItemNotify("Item successfully added to Cart.");
   }
 
   function incrementCartItemQuantity(product: Product) {
@@ -53,6 +96,7 @@ export const itemCart = defineStore("cart", () => {
       if (item.title === product.title) {
         if (item.quantity <= 1) {
           deleteCartItem(productList, product);
+          removedItemNotify("Item removed from Cart.");
         } else {
           item.quantity--;
           finalCartPrice.value -= item.price;
@@ -72,6 +116,7 @@ export const itemCart = defineStore("cart", () => {
     }
     // return the modified array
     finalCartPrice.value -= finalPrice(product.price, product.quantity);
+    removedItemNotify("Item removed from Cart.");
     return productList;
   }
 

@@ -1,17 +1,21 @@
 <template>
   <div class="productStyle">
     <h4 class="productTitle">{{ product.title }}</h4>
-    <p class="productDescription">
+    <p class="q-mt-lg q-mb-lg">
       {{ product.description }}
     </p>
     <div>
-      <img class="productImage" :src="product.image" :alt="product.image" />
-      <h4 class="productPrice">
+      <h4 class="q-ma-md float-right vertical-middle">
         - {{ product.price }}лв.
         <q-btn class="btnAddCart" @click="emits('addInCart', product)">
           Add in Cart
         </q-btn>
       </h4>
+      <img
+        class="productImage q-mb-xl"
+        :src="product.image"
+        :alt="product.image"
+      />
     </div>
   </div>
 </template>
@@ -43,7 +47,6 @@ const emits = defineEmits(["addInCart"]);
   height: 32px;
   line-height: 32px;
   padding: 0px 12px;
-  vertical-align: middle;
   width: auto;
   font-size: 14px;
   color: #42526e;
@@ -71,10 +74,8 @@ const emits = defineEmits(["addInCart"]);
 } */
 
 .productImage {
-  float: bottom;
   width: 250px;
   height: auto;
-  margin-bottom: 40px;
 }
 
 /* .productPrice {
