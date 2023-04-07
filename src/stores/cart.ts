@@ -95,8 +95,8 @@ export const itemCart = defineStore("cart", () => {
     for (let item of cartItems.value) {
       if (item.title === product.title) {
         if (item.quantity <= 1) {
-          deleteCartItem(productList, product);
           removedItemNotify();
+          deleteCartItem(productList, product);
         } else {
           item.quantity--;
           finalCartPrice.value -= item.price;
@@ -112,11 +112,11 @@ export const itemCart = defineStore("cart", () => {
     const index = productList.indexOf(product);
     // if the element is in the array, remove it
     if (index !== -1) {
+      removedItemNotify();
       productList.splice(index, 1);
     }
     // return the modified array
     finalCartPrice.value -= finalPrice(product.price, product.quantity);
-    removedItemNotify();
     return productList;
   }
 

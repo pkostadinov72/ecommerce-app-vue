@@ -1,18 +1,18 @@
 <template>
   <div class="productStyle">
-    <h4 class="productTitle">{{ product.title }}</h4>
-    <p class="q-mt-lg q-mb-lg">
+    <h2 class="q-mb-xl text-h4">{{ product.title }}</h2>
+    <h3 class="q-mt-lg q-mb-xl q-ml-lg text-subtitle1">
       {{ product.description }}
-    </p>
+    </h3>
     <div>
-      <h4 class="q-ma-md float-right vertical-middle">
+      <h4 class="q-mt-md q-ml-xl float-right vertical-middle">
         - {{ product.price }}лв.
         <q-btn class="btnAddCart" @click="emits('addInCart', product)">
           Add in Cart
         </q-btn>
       </h4>
       <img
-        class="productImage q-mb-xl"
+        class="productImage q-mb-xl q-mt-lg"
         :src="product.image"
         :alt="product.image"
       />
