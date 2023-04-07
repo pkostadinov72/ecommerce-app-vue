@@ -1,63 +1,47 @@
 <template>
   <div v-if="cartItems.length === 0">
-    <h1>Your cart is emty...</h1>
-    <h1>- <RouterLink to="/">Add</RouterLink> an Item!</h1>
+    <h3>Your cart is emty...</h3>
+    <h3>- <RouterLink to="/">Add</RouterLink> an Item!</h3>
   </div>
   <div class="container" v-else>
     <h1 class="finalPrice">Общо : {{ cart.finalCartPrice.toFixed(2) }}лв.</h1>
-    <q-btn class="btnPlusMinus" @click="addedItemNotify()">notify me</q-btn>
     <div>--------------------------------------------------</div>
     <div class="itemStyle" v-for="item in cartItems">
-      <h2 class="cartItemTitle">{{ item.title }}</h2>
+      <h4 class="cartItemTitle">{{ item.title }}</h4>
       <img class="cartProductImage" :src="item.image" :alt="item.image" />
-      <h2 class="price">
+      <h5 class="price">
         Цена за 1бр - {{ item.price }}лв. | Сума -
         {{ cart.finalPrice(item.price, item.quantity) }}лв.
-      </h2>
-      <h3>
-        <button
+      </h5>
+      <h5>
+        <q-btn
           class="btnPlusMinus"
           @click="cart.decrementCartItemQuantity(cartItems, item)"
         >
           -
-        </button>
+        </q-btn>
         {{ item.quantity }}бр.
-        <button
+        <q-btn
           class="btnPlusMinus"
           @click="cart.incrementCartItemQuantity(item)"
         >
           +
-        </button>
-      </h3>
-      <button
-        class="btnPlusMinus"
-        @click="cart.deleteCartItem(cartItems, item)"
-      >
+        </q-btn>
+      </h5>
+      <q-btn class="btnPlusMinus" @click="cart.deleteCartItem(cartItems, item)">
         Remove from Cart
-      </button>
+      </q-btn>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// pinia store
 import { itemCart } from "@/stores/cart";
 import { storeToRefs } from "pinia";
-import { useQuasar } from "quasar";
+
+// pinia store
 const cart = itemCart();
 const { cartItems } = storeToRefs(cart);
-
-const $q = useQuasar();
-
-function addedItemNotify() {
-  $q.notify({
-    message: "Item added to Cart.",
-    color: "green",
-    position: "top",
-    timeout: 2500,
-    progress: true,
-  });
-}
 </script>
 
 <style>

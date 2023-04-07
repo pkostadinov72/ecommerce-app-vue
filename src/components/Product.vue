@@ -1,17 +1,17 @@
 <template>
   <div class="productStyle">
-    <h2 class="productTitle">{{ product.title }}</h2>
+    <h4 class="productTitle">{{ product.title }}</h4>
     <p class="productDescription">
       {{ product.description }}
     </p>
     <div>
       <img class="productImage" :src="product.image" :alt="product.image" />
-      <h1 class="productPrice">
+      <h4 class="productPrice">
         - {{ product.price }}лв.
         <q-btn class="btnAddCart" @click="emits('addInCart', product)">
           Add in Cart
         </q-btn>
-      </h1>
+      </h4>
     </div>
   </div>
 </template>
@@ -60,15 +60,15 @@ const emits = defineEmits(["addInCart"]);
   margin: 25px;
 }
 
-.productTitle {
+/* .productTitle {
   font-size: 30px;
   margin-bottom: 20px;
-}
+} */
 
-.productDescription {
+/* .productDescription {
   margin-bottom: 75px;
   float: right;
-}
+} */
 
 .productImage {
   float: bottom;
@@ -77,8 +77,8 @@ const emits = defineEmits(["addInCart"]);
   margin-bottom: 40px;
 }
 
-.productPrice {
+/* .productPrice {
   float: right;
   margin: 10px;
-}
+} */
 </style>
