@@ -1,6 +1,6 @@
 # ecommerce-app-vue
 
-Simple eCommerce App with Vue + Typescript. Featuring Refresh proof pinia state and basic Vue Router implementation.
+Simple eCommerce App with Vue + Quasar + Typescript. Featuring Refresh proof pinia state,Quasar and basic Vue Router implementation.
 
 ## Recommended IDE Setup
 

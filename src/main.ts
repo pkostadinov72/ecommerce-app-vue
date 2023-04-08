@@ -7,6 +7,7 @@ import "./assets/main.css";
 import "quasar/dist/quasar.css";
 import "@quasar/extras/fontawesome-v5/fontawesome-v5.css";
 import "@quasar/extras/fontawesome-v6/fontawesome-v6.css";
+import iconSet from 'quasar/icon-set/fontawesome-v6'
 
 const app = createApp(App);
 const pinia = createPinia();
@@ -16,6 +17,7 @@ app.use(Quasar, {
   plugins: {
     Notify,
   },
+  iconSet: iconSet
 });
 
 app.mount("#app");

@@ -42,6 +42,8 @@ function addInCartHandler(product: Product) {
   } else if (!cart.incrementCartItemQuantity(product) as boolean) {
     cart.addCartItem(product);
     cart.finalCartPrice += product.price;
+  } else {
+    cart.itemNotify("One more Item Added.", "blue");
   }
 }
 

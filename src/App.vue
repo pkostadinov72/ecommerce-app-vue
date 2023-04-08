@@ -6,7 +6,7 @@ import { RouterLink, RouterView } from "vue-router";
   <nav>
     <RouterLink class="text-h6" to="/">Home</RouterLink>
     <RouterLink class="text-h6" to="/cart">Cart</RouterLink>
-    <!-- <q-icon name="fa-regular fa-cart-shopping" to="/cart">Cart</q-icon> -->
+    <!-- <q-icon name="fa-regular fa-cart-shopping" to="/cart"></q-icon> -->
     <RouterView />
   </nav>
 </template>

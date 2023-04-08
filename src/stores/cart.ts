@@ -63,7 +63,6 @@ export const itemCart = defineStore("cart", () => {
   function incrementCartItemQuantity(product: Product) {
     for (let item of cartItems.value) {
       if (item.title === product.title) {
-        itemNotify("One more Item Added.", "blue");
         item.quantity++;
         finalCartPrice.value += item.price;
         return true;
@@ -107,5 +106,6 @@ export const itemCart = defineStore("cart", () => {
     deleteCartItem,
     finalPrice,
     finalCartPrice,
+    itemNotify
   };
 });
