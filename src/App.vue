@@ -1,19 +1,49 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
+import { itemCart } from "@/stores/cart";
+import { storeToRefs } from "pinia";
+
+// pinia store
+const cart = itemCart();
+const { cartItems } = storeToRefs(cart);
 </script>
 
 <template>
   <nav>
-    <RouterLink class="text-h6" to="/">Home</RouterLink>
+    <RouterLink class="text-h6" to="/">
+      <q-icon name="home" size="lg"></q-icon>
+    </RouterLink>
     <RouterLink class="text-h6" to="/cart"
-      ><q-icon name="shopping_cart" size="md" to="/cart"></q-icon
-    ></RouterLink>
-
-    <RouterView />
+      ><q-icon name="o_shopping_cart" size="md"></q-icon>
+      <span class="badge badge-warning" id="lblCartCount">{{
+        cartItems.length
+      }}</span></RouterLink
+    ><RouterView />
   </nav>
 </template>
 
 <style scoped>
+.badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+  background-color: #c67605;
+}
+#lblCartCount {
+  font-size: 12px;
+  background: #ff0000;
+  color: #fff;
+  padding: 0 5px;
+  vertical-align: top;
+  margin-left: -10px;
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;
