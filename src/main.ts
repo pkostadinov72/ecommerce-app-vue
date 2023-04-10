@@ -1,13 +1,11 @@
 import { createApp } from "vue";
+import { Quasar, Notify } from "quasar";
 import { createPinia } from "pinia";
 import App from "./App.vue";
 import router from "./router";
-import { Quasar, Notify } from "quasar";
 import "./assets/main.css";
 import "quasar/dist/quasar.css";
-import "@quasar/extras/fontawesome-v5/fontawesome-v5.css";
-import "@quasar/extras/fontawesome-v6/fontawesome-v6.css";
-import iconSet from 'quasar/icon-set/fontawesome-v6'
+import "@quasar/extras/material-icons/material-icons.css";
 
 const app = createApp(App);
 const pinia = createPinia();
@@ -17,7 +15,6 @@ app.use(Quasar, {
   plugins: {
     Notify,
   },
-  iconSet: iconSet
 });
 
 app.mount("#app");

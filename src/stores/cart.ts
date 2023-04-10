@@ -37,8 +37,8 @@ export const itemCart = defineStore("cart", () => {
     $q.notify({
       message: msg,
       color: color,
-      position: "top",
-      timeout: 2500,
+      position: "top-right",
+      timeout: 2300,
       progress: true,
       actions: [
         {
@@ -106,6 +106,6 @@ export const itemCart = defineStore("cart", () => {
     deleteCartItem,
     finalPrice,
     finalCartPrice,
-    itemNotify
+    itemNotify,
   };
 });

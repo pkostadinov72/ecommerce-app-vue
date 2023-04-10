@@ -5,8 +5,10 @@ import { RouterLink, RouterView } from "vue-router";
 <template>
   <nav>
     <RouterLink class="text-h6" to="/">Home</RouterLink>
-    <RouterLink class="text-h6" to="/cart">Cart</RouterLink>
-    <!-- <q-icon name="fa-regular fa-cart-shopping" to="/cart"></q-icon> -->
+    <RouterLink class="text-h6" to="/cart"
+      ><q-icon name="shopping_cart" size="md" to="/cart"></q-icon
+    ></RouterLink>
+
     <RouterView />
   </nav>
 </template>
