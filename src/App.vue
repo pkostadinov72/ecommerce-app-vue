@@ -31,10 +31,6 @@ const { cartItems } = storeToRefs(cart);
   border-radius: 9px;
 }
 
-.label-warning[href],
-.badge-warning[href] {
-  background-color: #c67605;
-}
 #lblCartCount {
   font-size: 12px;
   background: #ff0000;
