@@ -5,12 +5,15 @@ import { useQuasar } from "quasar";
 export const itemCart = defineStore("cart", () => {
   const cartItems = ref<Product[]>([]);
   const finalCartPrice = ref<number>(0);
+  const allCartQuantity = ref<number>(0);
 
   if (localStorage.getItem("cart")) {
+    // checking if there is Cart Item in local storage, if true, set state.
     cartItems.value = JSON.parse(localStorage.getItem("cart") as string);
   }
 
   watch(
+    //saving Cart Items in local storage
     cartItems,
     (cartItemsVal) => {
       localStorage.setItem("cart", JSON.stringify(cartItemsVal));
@@ -19,13 +22,31 @@ export const itemCart = defineStore("cart", () => {
   );
 
   if (localStorage.getItem("final")) {
+    // checking if there is Final Price in local storage, if true, set state.
     finalCartPrice.value = JSON.parse(localStorage.getItem("final") as string);
   }
 
   watch(
+    //saving Final Price in local storage
     finalCartPrice,
     (finalVal) => {
       localStorage.setItem("final", JSON.stringify(finalVal));
+    },
+    { deep: true }
+  );
+
+  if (localStorage.getItem("cartQuantity")) {
+    // checking if there is different All Cart Quantity in local storage, if true, set state.
+    allCartQuantity.value = JSON.parse(
+      localStorage.getItem("cartQuantity") as string
+    );
+  }
+
+  watch(
+    //saving All Cart Quantity in local storage
+    allCartQuantity,
+    (cartQuantityVal) => {
+      localStorage.setItem("cartQuantity", JSON.stringify(cartQuantityVal));
     },
     { deep: true }
   );
@@ -57,6 +78,7 @@ export const itemCart = defineStore("cart", () => {
 
   function addCartItem(product: Product) {
     cartItems.value.push(product);
+    allCartQuantity.value++;
     itemNotify("Item successfully added to Cart.", "green");
   }
 
@@ -64,6 +86,7 @@ export const itemCart = defineStore("cart", () => {
     for (let item of cartItems.value) {
       if (item.title === product.title) {
         item.quantity++;
+        allCartQuantity.value++;
         finalCartPrice.value += item.price;
         return true;
       }
@@ -77,6 +100,7 @@ export const itemCart = defineStore("cart", () => {
           deleteCartItem(productList, product);
         } else {
           item.quantity--;
+          allCartQuantity.value--;
           finalCartPrice.value -= item.price;
           return true;
         }
@@ -94,6 +118,7 @@ export const itemCart = defineStore("cart", () => {
       productList.splice(index, 1);
     }
     // return the modified array
+    allCartQuantity.value -= product.quantity;
     finalCartPrice.value -= finalPrice(product.price, product.quantity);
     return productList;
   }
@@ -106,6 +131,7 @@ export const itemCart = defineStore("cart", () => {
     deleteCartItem,
     finalPrice,
     finalCartPrice,
+    allCartQuantity,
     itemNotify,
   };
 });

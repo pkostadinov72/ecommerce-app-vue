@@ -5,7 +5,7 @@ import { storeToRefs } from "pinia";
 
 // pinia store
 const cart = itemCart();
-const { cartItems } = storeToRefs(cart);
+const { allCartQuantity } = storeToRefs(cart);
 </script>
 
 <template>
@@ -16,7 +16,7 @@ const { cartItems } = storeToRefs(cart);
     <RouterLink class="text-h6" to="/cart"
       ><q-icon name="o_shopping_cart" size="md"></q-icon>
       <span class="badge badge-warning" id="lblCartCount">{{
-        cartItems.length
+        allCartQuantity
       }}</span></RouterLink
     ><RouterView />
   </nav>
