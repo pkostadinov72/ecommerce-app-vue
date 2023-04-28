@@ -9,7 +9,8 @@ const { allCartQuantity } = storeToRefs(cart);
 </script>
 
 <template>
-  <nav>
+  <RouterView />
+  <nav class="sticky">
     <RouterLink class="text-h6" to="/">
       <q-icon name="home" size="lg"></q-icon>
     </RouterLink>
@@ -18,11 +19,18 @@ const { allCartQuantity } = storeToRefs(cart);
       <span class="badge badge-warning" id="lblCartCount">{{
         allCartQuantity
       }}</span></RouterLink
-    ><RouterView />
+    >
   </nav>
 </template>
 
 <style scoped>
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 5rem;
+  right: 0;
+  z-index: 999;
+}
 .badge {
   padding-left: 9px;
   padding-right: 9px;
