@@ -6,7 +6,7 @@
     </h3>
     <div>
       <h4 class="q-mt-md q-ml-xl float-right vertical-middle">
-        - {{ product.price }}лв.
+         {{ product.price }}лв.
         <q-btn class="btnAddCart" @click="emits('addInCart', product)">
           Add in Cart
         </q-btn>
