@@ -38,10 +38,8 @@ async function getStore() {
 function addInCartHandler(product: Product) {
   if (cartItems.value.length === 0) {
     cart.addCartItem(product);
-    cart.finalCartPrice += product.price;
   } else if (!cart.incrementCartItemQuantity(product) as boolean) {
     cart.addCartItem(product);
-    cart.finalCartPrice += product.price;
   } else {
     cart.itemNotify("One more Item Added.", "blue");
   }
