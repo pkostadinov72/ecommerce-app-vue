@@ -96,7 +96,7 @@ export const itemCart = defineStore("cart", () => {
   function decrementCartItemQuantity(productList: Product[], product: Product) {
     for (let item of cartItems.value) {
       if (item.title === product.title) {
-        if (item.quantity <= 1) {
+        if (item.quantity === 1) {
           deleteCartItem(productList, product);
         } else {
           item.quantity--;
