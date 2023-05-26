@@ -25,6 +25,7 @@ const { allCartQuantity } = storeToRefs(cart);
 
 <style scoped>
 .sticky {
+  width: fit-content;
   position: fixed;
   top: 0;
   left: 5rem;

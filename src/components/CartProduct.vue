@@ -4,9 +4,10 @@
     <h4>- <RouterLink to="/">Add</RouterLink> an Item!</h4>
   </div>
   <div class="container" v-else>
-    <h1 class="finalPrice">Общо : {{ cart.finalCartPrice.toFixed(2) }}лв.</h1>
-
-    <q-separator></q-separator>
+    <h1 class="finalPrice">
+      Общо : {{ cart.finalCartPrice.toFixed(2) }}лв.
+      <q-btn class="q-ml-xl">Checkout</q-btn>
+    </h1>
 
     <div class="q-mb-xl" v-for="item in cartItems">
       <q-separator></q-separator>
